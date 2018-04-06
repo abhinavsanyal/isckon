@@ -1,9 +1,12 @@
 $(document).ready(function() {
 
 
+  let domain = "https://warm-chamber-42673.herokuapp.com/";
+
+
   $.ajax({
     type: 'get',
-    url: 'http://localhost:3000/api/bhakts',
+    url: domain+'/api/bhakts',
     success: function(data) {
     
       for (let i = 0; i < data.length; i++) {
@@ -41,7 +44,7 @@ $(document).ready(function() {
 
         $.ajax({
           type: 'delete',
-          url: 'http://localhost:3000/api/bhakts',
+          url: domain+'/api/bhakts',
           contentType: 'application/json',
           dataType: 'json',
           data: JSON.stringify(payload),
@@ -69,7 +72,7 @@ $(document).ready(function() {
     };
     $.ajax({
       type: 'post',
-      url: 'http://localhost:3000/api/bhakts',
+      url: domain+'/api/bhakts',
       contentType: 'application/json',
       dataType: 'json',
       data: JSON.stringify(body),
