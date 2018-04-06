@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
 
-  let domain = "https://warm-chamber-42673.herokuapp.com/";
+  let domain = "https://warm-chamber-42673.herokuapp.com";
 
 
   $.ajax({
