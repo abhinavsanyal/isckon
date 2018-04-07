@@ -11,7 +11,7 @@ var path=require('path');
 var setupController=require('./controllers/setupController');
 var apiController = require('./controllers/apiController');
 
-var port=process.env.PORT || 3000;
+var port=process.env.PORT || 5000;
 
 // set the public folder up for static resources
 //app.use(express.static(path.join(__dirname,"/public")));
@@ -21,7 +21,7 @@ app.set('view engine','ejs');
 
 
 //establish the connection to mongodb
-mongoose.connect(configInfo.getConnectionUrl(),(err)=>{
+mongoose.connect(configInfo.getConnectionUrl(),{ useMongoClient: true },(err)=>{
     if(err) return console.log('fucked up', err);
     console.log("connected to database");
 });
@@ -32,38 +32,18 @@ setupController(app);
 //All crud routes
 apiController(app);
 
-io.on('connection' , (socket) => {
 
-  
-    socket.on('disconnect' , () =>{
-      
+
+
+io.on('connection', function (socket) {
+    console.log('socket connected');
+
+    socket.on('disconnect', function () {
+        console.log('socket disconnected');
     });
- 
- });
- 
- 
- server.listen(port , (err) => {
-     if(err) return console.log(err);
- 
-     console.log(`server started at port ${port}`);
- });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    socket.emit('text', 'wow. such event. very real time.');
+});
 
 
 
