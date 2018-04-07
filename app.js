@@ -32,6 +32,42 @@ setupController(app);
 //All crud routes
 apiController(app);
 
+io.on('connection' , (socket) => {
+
+  
+    socket.on('disconnect' , () =>{
+      
+    });
+ 
+ });
+ 
+ 
+ server.listen(port , (err) => {
+     if(err) return console.log(err);
+ 
+     console.log(`server started at port ${port}`);
+ });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //Create the server and listen for requests on port
 server.listen(port,(err)=>
 {
