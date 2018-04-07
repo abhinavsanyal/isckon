@@ -41,12 +41,15 @@ io.on('connection', function (socket) {
     socket.on('added',function(msg){
         io.emit('new-add');
     })
+    socket.on('deleted',function(msg){
+        io.emit('new-delete');
+    })
 
     socket.on('disconnect', function () {
         console.log('socket disconnected');
     });
 
-    socket.emit('text', 'wow. such event. very real time.');
+ 
 });
 
 
