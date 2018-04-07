@@ -9,7 +9,7 @@ var apiController = require('./controllers/apiController');
 var port=process.env.PORT || 3000;
 
 // set the public folder up for static resources
-app.use(express.static(path.join(__dirname,"/public")));
+//app.use(express.static(path.join(__dirname,"/public")));
 
 //set the templating engine
 app.set('view engine','ejs');
