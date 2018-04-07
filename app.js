@@ -1,5 +1,10 @@
 var express= require('express');
 var app=express();
+
+var server = require('http').createServer(app);
+var io = require('socket.io')(server);
+
+
 var mongoose=require('mongoose');
 var configInfo=require('./config');
 var path=require('path');
@@ -28,7 +33,7 @@ setupController(app);
 apiController(app);
 
 //Create the server and listen for requests on port
-app.listen(port,(err)=>
+server.listen(port,(err)=>
 {
     if(err) throw err;
     console.log("server started");
