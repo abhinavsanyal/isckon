@@ -38,6 +38,10 @@ apiController(app);
 io.on('connection', function (socket) {
     console.log('socket connected');
 
+    socket.on('added',function(msg){
+        io.emit('new-add');
+    })
+
     socket.on('disconnect', function () {
         console.log('socket disconnected');
     });
